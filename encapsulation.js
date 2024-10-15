@@ -2,6 +2,7 @@
 //  * + bảo vệ trạng thái bên trong của đối tượng 
 //  * +phép truy cập và sửa đổi các thuộc tính thông qua các phương thức (getter và setter).
 //  * +ngăn chặn các thay đổi trực tiếp đến thuộc tính từ bên ngoài, 
+
 class Person {
     // #:Thuộc tính private
     #name
@@ -39,10 +40,13 @@ class Person {
    }
    
 }
-const person_child=new Person("ểgth",32)
-   
+//Tạo một đối tượng tên Person
+const person_child=new Person("ểgth",32,"male","2454610563")
+// B1:chỏ vào gtri xét cứng ban đầu
    console.log(person_child.getName())
+// B2:thay đổi tên
    person_child.setName("adrgthh")
+// B3:hiển thị lại số liệu đã đc thay đổi
    console.log(person_child.getName())
    
    console.log(person_child.getAge())
@@ -50,7 +54,3 @@ const person_child=new Person("ểgth",32)
    console.log(person_child.getAge())
    
    person_child.setAge(-5)
-   
-
-   //BỊ LỖI ĐANG SỬA
-   

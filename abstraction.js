@@ -48,4 +48,3 @@ myCar.drive()
 myCar.refuel(50)
 myCar.drive()
 
-// CHƯA HIỂU LẮM

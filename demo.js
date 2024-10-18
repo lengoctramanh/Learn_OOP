@@ -1,4 +1,4 @@
-//!Static Methods and Properties ( Phương thức tĩnh và thuốc tính tĩnh )
+//!Static Methods and Properties ( Phương thức tĩnh và thuộc tính tĩnh )
 class Counter {
     // Thuộc tính tĩnh để đếm số lần sử dụng
     static count = 0;

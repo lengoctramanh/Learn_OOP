@@ -16,11 +16,11 @@ class Person {
          this.gender=gender;
           this.phoneNumber=phoneNumber;
     }
-    // Method chọt thẳng vào property name
+    // Method lấy gtri cho property name
     getName(){
         return this.#name
     }
-   // Method thay đổi property name
+   // Method gán gtri cho property name
    setName(newName){
        this.#name=newName
    }

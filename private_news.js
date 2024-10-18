@@ -1,55 +1,52 @@
-//?Được đánh dấu bằng #, chỉ truy cập được bên trong class.
-class BankAccount {
-    // Thuộc tính riêng tư (Private field)
-    #balance = 0;
-
-    constructor(owner, initialBalance) {
-        this.owner = owner;
-        this.#balance = initialBalance;
+// Các chức năng riêng biệt
+const canFly = {
+    fly() {
+        console.log(`${this.name} đang bay!`);
     }
+};
 
-    // Phương thức riêng tư (Private method)
-    #validateAmount(amount) {
-        return amount > 0;
+const canSwim = {
+    swim() {
+        console.log(`${this.name} đang bơi!`);
     }
+};
 
-    // Phương thức công khai để gửi tiền
-    deposit(amount) {
-        if (this.#validateAmount(amount)) {
-            this.#balance += amount;
-            console.log(`Đã gửi ${amount} vào tài khoản.`);
-        } else {
-            console.log('Số tiền không hợp lệ để gửi.');
-        }
+const canWalk = {
+    walk() {
+        console.log(`${this.name} đang đi bộ!`);
     }
+};
 
-    // Phương thức công khai để rút tiền
-    withdraw(amount) {
-        if (this.#validateAmount(amount) && amount <= this.#balance) {
-            this.#balance -= amount;
-            console.log(`Đã rút ${amount} từ tài khoản.`);
-        } else {
-            console.log('Số tiền không hợp lệ để rút hoặc số dư không đủ.');
-        }
-    }
-
-    // Phương thức công khai để kiểm tra số dư
-    getBalance() {
-        console.log(`Số dư hiện tại là: ${this.#balance}`);
+// Lớp động vật cơ bản
+class Animal {
+    constructor(name) {
+        this.name = name;
     }
 }
 
-// Tạo đối tượng BankAccount
-const myAccount = new BankAccount("Tai Heo", 1000);
+// Sử dụng composition để tạo ra các đối tượng động vật với khả năng khác nhau
+class Duck extends Animal {
+    constructor(name) {
+        super(name);
+        Object.assign(this, canFly, canSwim, canWalk);  // Kết hợp các thành phần
+    }
+}
 
-// Sử dụng các phương thức công khai
-myAccount.deposit(500);     // Đã gửi 500 vào tài khoản.
-myAccount.getBalance();      // Số dư hiện tại là: 1500
-myAccount.withdraw(300);     // Đã rút 300 từ tài khoản.
-myAccount.getBalance();      // Số dư hiện tại là: 1200
+class Penguin extends Animal {
+    constructor(name) {
+        super(name);
+        Object.assign(this, canSwim, canWalk);  // Kết hợp thành phần đi bộ và bơi
+    }
+}
 
-// Thử truy cập vào thuộc tính và phương thức riêng tư từ bên ngoài (sẽ gây lỗi)
-console.log(myAccount.#balance);       // Lỗi: Private field '#balance' must be declared in an enclosing class
-myAccount.#validateAmount(100);        // Lỗi: Private method '#validateAmount' is not accessible outside class
+// Tạo các đối tượng từ các lớp đã được kết hợp
+const donald = new Duck("Donald");
+donald.fly();    // Donald đang bay!
+donald.swim();   // Donald đang bơi!
+donald.walk();   // Donald đang đi bộ!
 
-//CHƯA HIỂU LẮM
+const pingu = new Penguin("Pingu");
+pingu.swim();    // Pingu đang bơi!
+pingu.walk();    // Pingu đang đi bộ!
+// pingu.fly();  // Sẽ báo lỗi nếu gọi vì Penguin không có khả năng bay
+// CHƯA HIỂU LẮM

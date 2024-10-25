@@ -1,3 +1,5 @@
+// Composition
+
 // Các chức năng riêng biệt
 const canFly = {
     fly() {
@@ -28,14 +30,17 @@ class Animal {
 class Duck extends Animal {
     constructor(name) {
         super(name);
-        Object.assign(this, canFly, canSwim, canWalk);  // Kết hợp các thành phần
+        // 1.Gán phương thức có trong canFly,canSwim, canWalk vào this của class con Duck
+        //2. Tạo ra các phương thức this.fly, this.swim, và this.walk trong Duck
+        Object.assign(this, canFly, canSwim, canWalk);  
+       
     }
 }
 
 class Penguin extends Animal {
     constructor(name) {
         super(name);
-        Object.assign(this, canSwim, canWalk);  // Kết hợp thành phần đi bộ và bơi
+        Object.assign(this, canSwim, canWalk);  
     }
 }
 
@@ -49,4 +54,3 @@ const pingu = new Penguin("Pingu");
 pingu.swim();    // Pingu đang bơi!
 pingu.walk();    // Pingu đang đi bộ!
 // pingu.fly();  // Sẽ báo lỗi nếu gọi vì Penguin không có khả năng bay
-// CHƯA HIỂU LẮM
